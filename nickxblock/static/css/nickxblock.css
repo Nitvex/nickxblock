@@ -1,0 +1,9 @@
+/* CSS for NikitaXBlock */
+
+.nickxblock_block .count {
+    font-weight: bold;
+}
+
+.nickxblock_block p {
+    cursor: pointer;
+}

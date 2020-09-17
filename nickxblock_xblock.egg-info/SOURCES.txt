@@ -1,0 +1,13 @@
+setup.py
+nickxblock/__init__.py
+nickxblock/nickxblock.py
+nickxblock/static/README.txt
+nickxblock/static/css/nickxblock.css
+nickxblock/static/html/nickxblock.html
+nickxblock/static/js/src/nickxblock.js
+nickxblock_xblock.egg-info/PKG-INFO
+nickxblock_xblock.egg-info/SOURCES.txt
+nickxblock_xblock.egg-info/dependency_links.txt
+nickxblock_xblock.egg-info/entry_points.txt
+nickxblock_xblock.egg-info/requires.txt
+nickxblock_xblock.egg-info/top_level.txt
