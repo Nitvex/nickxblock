@@ -15,6 +15,7 @@ class NikitaXBlock(XBlock):
         default=0, scope=Scope.user_state,
         help="A simple counter, to show something happening",
     )
+    has_score = True
 
     def resource_string(self, path):
         """Handy helper for getting resources from our kit."""
