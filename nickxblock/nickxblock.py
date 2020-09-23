@@ -38,7 +38,7 @@ class NikitaXBlock(XBlock):
     @XBlock.json_handler
     def check(self, data, suffix=''):
         self.runtime.publish(self, "grade",
-                    { value: 1.0
+                    { value: 1.0,
                       max_value: 2.0 })
 
         return {"result": 1.0}    
