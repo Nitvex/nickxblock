@@ -4,9 +4,10 @@ import pkg_resources
 from web_fragments.fragment import Fragment
 from xblock.core import XBlock
 from xblock.fields import Integer, Scope
+from xblock.scorable import ScorableXBlockMixin, Score
 
 
-class NikitaXBlock(XBlock):
+class NikitaXBlock(ScorableXBlockMixin, XBlock):
     # Fields are defined on the class.  You can access them in your code as
     # self.<fieldname>.
 
@@ -37,10 +38,10 @@ class NikitaXBlock(XBlock):
 
     @XBlock.json_handler
     def check(self, data, suffix=''):
-        self.runtime.publish(self, "grade",
-                    { value: 1.0,
-                      max_value: 2.0 })
-
+        # self.runtime.publish(self, "grade",
+        #             { value: 1.0,
+        #               max_value: 2.0 })
+        self._publish_grade(Score(1.0, 2.0))
         return {"result": 1.0}    
 
     # TO-DO: change this to create the scenarios you'd like to see in the
