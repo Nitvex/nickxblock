@@ -78,7 +78,9 @@ class NikitaXBlock(ScorableXBlockMixin, XBlock):
         # self.runtime.publish(self, "grade",
         #             { value: 1.0,
         #               max_value: 2.0 })
-        self._publish_grade(Score(1.0, 2.0))
+        maxSymbols = 10
+        symbols = min(len(data.data), maxSymbols)
+        self._publish_grade(Score(symbols, maxSymbols))
         return {"result": 1.0}    
 
     # TO-DO: change this to create the scenarios you'd like to see in the
