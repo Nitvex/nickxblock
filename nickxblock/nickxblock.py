@@ -47,7 +47,7 @@ class NikitaXBlock(ScorableXBlockMixin, XBlock):
         Return the problem's max score
         Required by the grading system in the LMS.
         """
-        return 2
+        return 10
     
     def set_score(self, score):
         """
@@ -58,7 +58,7 @@ class NikitaXBlock(ScorableXBlockMixin, XBlock):
         """
         #assert score.raw_possible == self.max_score()
         #score.raw_earned = 1/2
-        self.count = 1 #score.raw_earned
+        self.count = score.raw_earned #score.raw_earned
 
     def get_score(self):
         """
@@ -79,9 +79,9 @@ class NikitaXBlock(ScorableXBlockMixin, XBlock):
         #             { value: 1.0,
         #               max_value: 2.0 })
         maxSymbols = 10
-        symbols = min(len(data.data), maxSymbols)
+        symbols = min(len(data['data']), maxSymbols)
         self._publish_grade(Score(symbols, maxSymbols))
-        return {"result": 1.0}    
+        return {"result": symbols}    
 
     # TO-DO: change this to create the scenarios you'd like to see in the
     # workbench while developing your XBlock.
