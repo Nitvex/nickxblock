@@ -2,7 +2,7 @@
 function NikitaXBlock(runtime, element) {
 
     function showAlert(result) {
-        const span = document.querySelector("count");
+        const span = $(".count", element)[0];
         span.innerText = `you scored ${result.result} out of 10`;
         alert(JSON.stringify(result));
     }
@@ -10,11 +10,11 @@ function NikitaXBlock(runtime, element) {
     var handlerUrl = runtime.handlerUrl(element, 'check');
 
     $('button', element).click(function(event) {
-        const input = document.querySelector("input");
+        const input = $("input", element);
         $.ajax({
             type: "POST",
             url: handlerUrl,
-            data: JSON.stringify({ data: input.value}),
+            data: JSON.stringify({ data: input.val()}),
             success: showAlert
         });
     })
