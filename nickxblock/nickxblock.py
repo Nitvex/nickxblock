@@ -35,6 +35,43 @@ class NikitaXBlock(ScorableXBlockMixin, XBlock):
         frag.add_javascript(self.resource_string("static/js/src/nickxblock.js"))
         frag.initialize_js('NikitaXBlock')
         return frag
+    
+    def has_submitted_answer(self):
+        """
+        Returns True if the user has made a submission.
+        """
+        return self.fields['count'].is_set_on(self)
+
+    def max_score(self):  # pylint: disable=no-self-use
+        """
+        Return the problem's max score
+        Required by the grading system in the LMS.
+        """
+        return 2
+    
+    def set_score(self, score):
+        """
+        Sets the score on this block.
+        Takes a Score namedtuple containing a raw
+        score and possible max (for this block, we expect that this will
+        always be 1).
+        """
+        #assert score.raw_possible == self.max_score()
+        #score.raw_earned = 1/2
+        self.count = 1 #score.raw_earned
+
+    def get_score(self):
+        """
+        Return the problem's current score as raw values.
+        """        
+        return Score(1, self.max_score())
+
+    def calculate_score(self):
+        """
+        Returns a newly-calculated raw score on the problem for the learner
+        based on the learner's current state.
+        """
+        return Score(1, self.max_score())
 
     @XBlock.json_handler
     def check(self, data, suffix=''):
